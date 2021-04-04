@@ -8,7 +8,9 @@ public class SimpleList {
     }
     
     public void add(SongNode newSong){
-        if(!isEmpty()){
+        if(isEmpty()){
+            head = newSong;
+        }else{
             SongNode temp = head;
             
             while(temp.next != null){
