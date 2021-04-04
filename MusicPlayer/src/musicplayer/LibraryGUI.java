@@ -6,17 +6,21 @@ public class LibraryGUI extends javax.swing.JFrame {
         this.setTitle("Library");
         this.setLocationRelativeTo(null);
     }
+    
+    SimpleList libraryList = new SimpleList();
+    Library libraryInstance = new Library();
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         txtSingerName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblInformacion = new javax.swing.JTable();
+        tblInformation = new javax.swing.JTable();
         txtSongName = new javax.swing.JTextField();
         txtSongDuration = new javax.swing.JTextField();
         btnExit = new javax.swing.JButton();
-        cbxAños = new javax.swing.JComboBox<>();
+        cbxYear = new javax.swing.JComboBox<>();
         lblLibrary = new javax.swing.JLabel();
         btnCreatePlayList = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -34,17 +38,18 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
 
-        tblInformacion.setModel(new javax.swing.table.DefaultTableModel(
+        tblInformation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cantante", "Cancion", "Duracion", "Año"
+                "Singer", "Song", "Duration", "Year"
             }
         ));
-        tblInformacion.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(tblInformacion);
-        tblInformacion.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblInformation.setCellSelectionEnabled(true);
+        tblInformation.setName("tblInformation"); // NOI18N
+        jScrollPane1.setViewportView(tblInformation);
+        tblInformation.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         txtSongName.setText("Song name");
         txtSongName.setName("txtSongName"); // NOI18N
@@ -75,8 +80,8 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
 
-        cbxAños.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
-        cbxAños.setName("cbxAños"); // NOI18N
+        cbxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
+        cbxYear.setName("cbxYear"); // NOI18N
 
         lblLibrary.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblLibrary.setText("Library");
@@ -149,7 +154,7 @@ public class LibraryGUI extends javax.swing.JFrame {
                                     .addComponent(txtSongDuration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cbxAños, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnAdd))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -170,14 +175,14 @@ public class LibraryGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSingerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxAños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtSongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSongDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd))
-                .addGap(40, 40, 40)
+                .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -204,7 +209,14 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        libraryList.add(libraryInstance.generateSongNode(
+                txtSongName.getText(),
+                txtSingerName.getText(),
+                cbxYear.getSelectedItem().toString(),
+                Integer.parseInt(txtSongDuration.getText())
+        ));
+        libraryInstance.updateTable(this.tblInformation, libraryList);
+        System.out.println(libraryList.isEmpty());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
@@ -250,10 +262,10 @@ public class LibraryGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnPrev;
-    private javax.swing.JComboBox<String> cbxAños;
+    private javax.swing.JComboBox<String> cbxYear;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLibrary;
-    private javax.swing.JTable tblInformacion;
+    private javax.swing.JTable tblInformation;
     private javax.swing.JTextField txtSingerName;
     private javax.swing.JTextField txtSongDuration;
     private javax.swing.JTextField txtSongName;
