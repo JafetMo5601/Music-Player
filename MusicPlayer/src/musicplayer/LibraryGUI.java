@@ -216,7 +216,6 @@ public class LibraryGUI extends javax.swing.JFrame {
                 Integer.parseInt(txtSongDuration.getText())
         ));
         libraryInstance.updateTable(this.tblInformation, libraryList);
-        System.out.println(libraryList.isEmpty());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed

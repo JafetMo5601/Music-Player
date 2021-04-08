@@ -4,9 +4,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Library {
-    public SongNode generateSongNode(
+    public SongNodeQueue generateSongNode(
             String name, String artist, String year, int duration){
-        return new SongNode(new Song(name, artist, year, duration));
+        return new SongNodeQueue(new Song(name, artist, year, duration));
     }
     
     public DefaultTableModel getModel(JTable table){
@@ -20,7 +20,7 @@ public class Library {
     public void updateTable(JTable musicTable, Queue list){
         DefaultTableModel m = getModel(musicTable);
         clearTable(m);
-        SongNode temp = list.head; 
+        SongNodeQueue temp = list.head; 
         if(!list.isEmpty()){
             do{
                 m.addRow(new Object[]{

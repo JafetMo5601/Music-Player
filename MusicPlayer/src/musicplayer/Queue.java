@@ -1,14 +1,14 @@
 package musicplayer;
 
 public class Queue {
-    SongNode head = null;
-    SongNode last = null;
+    SongNodeQueue head = null;
+    SongNodeQueue last = null;
     
     public boolean isEmpty(){
         return (head == null);
     }
     
-    public void enqueue(SongNode newSong){
+    public void enqueue(SongNodeQueue newSong){
         if(isEmpty()){
             System.out.println("Empty queue");
             head = newSong;
@@ -25,7 +25,7 @@ public class Queue {
         if (isEmpty()){
             System.out.println("No items in the list");
         }else{
-            SongNode oldHead = head;
+            SongNodeQueue oldHead = head;
             head = oldHead.next;
             System.out.println("New head " + head.song.songName);
         }
