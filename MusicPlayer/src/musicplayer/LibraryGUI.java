@@ -7,7 +7,7 @@ public class LibraryGUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    SimpleList libraryList = new SimpleList();
+    Queue libraryList = new Queue();
     Library libraryInstance = new Library();
     
     @SuppressWarnings("unchecked")
@@ -209,7 +209,7 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        libraryList.add(libraryInstance.generateSongNode(
+        libraryList.enqueue(libraryInstance.generateSongNode(
                 txtSongName.getText(),
                 txtSingerName.getText(),
                 cbxYear.getSelectedItem().toString(),
