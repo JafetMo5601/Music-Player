@@ -17,7 +17,7 @@ public class Library {
         model.setRowCount(0);
     }
     
-    public void updateTable(JTable musicTable, SimpleList list){
+    public void updateTable(JTable musicTable, Queue list){
         DefaultTableModel m = getModel(musicTable);
         clearTable(m);
         SongNode temp = list.head; 
