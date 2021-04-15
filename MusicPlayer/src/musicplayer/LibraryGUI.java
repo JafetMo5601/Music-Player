@@ -1,14 +1,18 @@
 package musicplayer;
 
+import javax.swing.JOptionPane;
+
 public class LibraryGUI extends javax.swing.JFrame {
     public LibraryGUI() {
         initComponents();
         this.setTitle("Library");
         this.setLocationRelativeTo(null);
     }
-    
+     
+    DoubleCircularLinkedList newPlaylist = new DoubleCircularLinkedList();
     Queue libraryList = new Queue();
     Library libraryInstance = new Library();
+    SongNodeDCLL temp;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,6 +31,7 @@ public class LibraryGUI extends javax.swing.JFrame {
         btnPlay = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
+        lblCurrentSong = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +132,8 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
 
+        lblCurrentSong.setText("No Current Songs");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +169,12 @@ public class LibraryGUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnPrev)
                 .addGap(18, 18, 18)
-                .addComponent(btnPlay)
-                .addGap(18, 18, 18)
-                .addComponent(btnNext)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCurrentSong)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPlay)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNext)))
                 .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
@@ -184,12 +194,14 @@ public class LibraryGUI extends javax.swing.JFrame {
                     .addComponent(btnAdd))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
+                .addComponent(lblCurrentSong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPlay)
                     .addComponent(btnNext)
                     .addComponent(btnPrev))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreatePlayList)
                     .addComponent(btnExit))
@@ -205,7 +217,11 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnCreatePlayListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlayListActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Antes del metodo recursivo");
+        newPlaylist.IntegrarRecursivo(libraryList.head);
+        System.out.println(newPlaylist.head.song.songName);
+        System.out.println(newPlaylist.last.song.songName);
+        
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -219,15 +235,20 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
-        // TODO add your handling code here:
+        temp = newPlaylist.head;
+        lblCurrentSong.setText(temp.song.songName);
+
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
+     temp = temp.next;
+     lblCurrentSong.setText(temp.song.songName);
+        
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
+     temp = temp.prev;
+     lblCurrentSong.setText(temp.song.songName);
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void txtSingerNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSingerNameMouseClicked
@@ -263,6 +284,7 @@ public class LibraryGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnPrev;
     private javax.swing.JComboBox<String> cbxYear;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCurrentSong;
     private javax.swing.JLabel lblLibrary;
     private javax.swing.JTable tblInformation;
     private javax.swing.JTextField txtSingerName;
