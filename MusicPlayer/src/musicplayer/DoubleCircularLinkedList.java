@@ -1,7 +1,5 @@
 package musicplayer;
 
-import javax.swing.JOptionPane;
-
 public class DoubleCircularLinkedList {
 
     SongNodeDCLL head;
@@ -27,39 +25,31 @@ public class DoubleCircularLinkedList {
             last = newSong;
         }
     }
-    
-    public int IntegrarRecursivo(SongNodeQueue songNode){
-        if(songNode == null) {
+
+    public int IntegrarRecursivo(SongNodeQueue songNode) {
+        if (songNode == null) {
             return 1;
         } else {
             SongNodeDCLL temp = new SongNodeDCLL(songNode.song);
-            this.add(temp);
+            // buscar(temp.song.songName); // envia el nombre
+//            this.add(temp);
             return IntegrarRecursivo(songNode.next);
         }
     }
 
-//    public void next(SongNodeDCLL song) {
-//        SongNodeDCLL actual = new SongNodeDCLL(song);
-//        if (isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "The playlist is empty cannot play the next song");
-//        } else {
-//
-//            actual = head;
-//            actual = actual.next;
-//        }
-//
-//    }
-//
-//    public void prev(SongNodeDCLL song) {
-//        SongNodeDCLL actual = new SongNodeDCLL(song);
-//
-//        if (isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "The playlist is empty cannot play the previous song");
-//        } else {
-//            actual = head;
-//            actual = actual.prev;
-//        }
-//
-//    }
-
+    public void buscar(String nombre) {
+        // El mae va a buscar el campo donde entrar
+        if (!isEmpty()) {
+            SongNodeDCLL temp = head;
+            do {
+                // Si el mae deberia estar despues por orden alfabetico
+                // el mae lo ingresa como su anterior
+                // si no que siga
+                if (temp.song.songName.equals(nombre)) {
+                    break;
+                }
+                temp = temp.next;
+            } while (temp != head);
+        }
+    }
 }
