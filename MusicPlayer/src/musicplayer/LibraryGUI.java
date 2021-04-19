@@ -32,6 +32,7 @@ public class LibraryGUI extends javax.swing.JFrame {
         btnNext = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
         lblCurrentSong = new javax.swing.JLabel();
+        btnGender = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,13 @@ public class LibraryGUI extends javax.swing.JFrame {
 
         lblCurrentSong.setText("No Current Songs");
 
+        btnGender.setText("Genders");
+        btnGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,6 +153,8 @@ public class LibraryGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnGender)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreatePlayList)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExit))))
@@ -204,7 +214,8 @@ public class LibraryGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreatePlayList)
-                    .addComponent(btnExit))
+                    .addComponent(btnExit)
+                    .addComponent(btnGender))
                 .addContainerGap())
         );
 
@@ -217,9 +228,10 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnCreatePlayListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlayListActionPerformed
-        System.out.println("Antes del metodo recursivo");
         newPlaylist.IntegrarRecursivo(libraryList.head);
+//        newPlaylist.printList();
         System.out.println(newPlaylist.head.song.songName);
+        System.out.println(newPlaylist.head.next.song.songName);
         System.out.println(newPlaylist.last.song.songName);
         
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
@@ -267,6 +279,11 @@ public class LibraryGUI extends javax.swing.JFrame {
         txtSongDuration.setText("");
     }//GEN-LAST:event_txtSongDurationMouseClicked
 
+    private void btnGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenderActionPerformed
+        new GenderClassification().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGenderActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -279,6 +296,7 @@ public class LibraryGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCreatePlayList;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnGender;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnPrev;
