@@ -4,6 +4,7 @@ public class HomeScreenGUI extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Music Player");
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
