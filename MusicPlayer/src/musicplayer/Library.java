@@ -3,12 +3,7 @@ package musicplayer;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Library {
-    public SongNodeQueue generateSongNode(
-            String name, String artist, String year, int duration){
-        return new SongNodeQueue(new Song(name, artist, year, duration));
-    }
-    
+public class Library {    
     public DefaultTableModel getModel(JTable table){
         return (DefaultTableModel) table.getModel();
     }
