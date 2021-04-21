@@ -1,5 +1,7 @@
 package musicplayer;
 
+import musicplayer.LinkedListModule.SimpleStringList;
+
 public class Song {
     public String songName;
     public String artist;

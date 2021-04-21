@@ -1,5 +1,7 @@
 package musicplayer;
 
+import musicplayer.QueueModule.Queue;
+import musicplayer.QueueModule.SongNodeQueue;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
