@@ -1,4 +1,7 @@
-package musicplayer;
+package musicplayer.GraphModule;
+
+import musicplayer.DCLLModule.SongNodeDCLL;
+
 public class SimpleList {
     private SongNodeList head;
 
@@ -24,12 +27,11 @@ public class SimpleList {
         if (isEmpty()) {
             list = "Empty!";
         } else {
-            SongNodeList temporal = head;
+            SongNodeList temp = head;
             do {
-                list += temporal.song.songName + " - ";
-                temporal = temporal.next;
-            } while (temporal != null);
-            list += " FIN";
+                list += temp.song.songName + " ";
+                temp = temp.next;
+            } while (temp != null);
         }
         return list;
     }

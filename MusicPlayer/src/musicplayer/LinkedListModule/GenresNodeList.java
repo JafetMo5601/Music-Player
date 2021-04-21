@@ -1,8 +1,8 @@
-package musicplayer;
+package musicplayer.LinkedListModule;
 
 public class GenresNodeList {
-    String genreName;
-    GenresNodeList next;
+    public String genreName;
+    public GenresNodeList next;
 
     public GenresNodeList(String genreName) {
         this.genreName = genreName;

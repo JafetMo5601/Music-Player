@@ -1,8 +1,11 @@
-package musicplayer;
+package musicplayer.QueueModule;
+
+import javax.swing.JOptionPane;
+import musicplayer.Song;
 
 public class Queue {
-    SongNodeQueue head = null;
-    SongNodeQueue last = null;
+    public SongNodeQueue head = null;
+    public SongNodeQueue last = null;
     
     public boolean isEmpty(){
         return (head == null);
@@ -11,24 +14,20 @@ public class Queue {
     public void enqueue(Song song){
         SongNodeQueue newSong = new SongNodeQueue(song);
         if(isEmpty()){
-            System.out.println("Empty queue");
             head = newSong;
             last = newSong;
-            System.out.println("New head " + head.song.songName);
         }else{
             last.next = newSong;
             last = newSong;
-            System.out.println("New item added " + last.song.songName);
         }
     }
     
     public void dequeue(){
         if (isEmpty()){
-            System.out.println("No items in the list");
+            JOptionPane.showMessageDialog(null, "No items in the list to dequeue");
         }else{
             SongNodeQueue oldHead = head;
             head = oldHead.next;
-            System.out.println("New head " + head.song.songName);
         }
     }
 }

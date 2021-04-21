@@ -1,4 +1,8 @@
-package musicplayer;
+package musicplayer.GraphModule;
+
+import musicplayer.LinkedListModule.GenresNodeList;
+import musicplayer.DCLLModule.SongNodeDCLL;
+import musicplayer.DCLLModule.DoubleCircularLinkedList;
 
 public class Graph {
     public int verticesQuantity = 0;
@@ -16,46 +20,39 @@ public class Graph {
         SongNodeDCLL temp = songsList.head;
         do{
             addEdge(temp);
-        }while(temp.next != songsList.head);
+            temp = temp.next;
+        }while(temp != songsList.last);
     }
 
     public void addEdge(SongNodeDCLL song) {
         GenresNodeList tempNode = song.song.genres.head;
         do{
             if (tempNode.genreName.equals("Merengue")){
-                System.out.println("Adding to Merengue");
                 vertices[0].add(song);
             }
             if (tempNode.genreName.equals("Pop")){
-                System.out.println("Adding to Pop");
                 vertices[1].add(song);
             }
             if (tempNode.genreName.equals("Electronic")){
-                System.out.println("Adding to Electronic");
                 vertices[2].add(song);
             }
             if (tempNode.genreName.equals("Reggae")){
-                System.out.println("Adding to Reggae");
                 vertices[3].add(song);
             }
             if (tempNode.genreName.equals("Salsa")){
-                System.out.println("Adding to Salsa");
                 vertices[4].add(song);
             }
             if (tempNode.genreName.equals("Rock")){
-                System.out.println("Adding to Rock");
                 vertices[5].add(song);
             }
             if (tempNode.genreName.equals("Instrumental")){
-                System.out.println("Adding to Instrumental");
                 vertices[6].add(song);
             }
             if (tempNode.genreName.equals("Reggaeton")){
-                System.out.println("Adding to Reggaeton");
                 vertices[7].add(song);
             }
             tempNode = tempNode.next;
-        } while (tempNode.next != null);
+        } while (tempNode != null);
     }
     
     public int totalEdges(){
@@ -101,7 +98,7 @@ public class Graph {
     public void printGraph(){
         for (int i = 0; i < verticesQuantity; i++){
             if(!vertices[i].isEmpty()){
-                System.out.println("The node " + i + "connects with the nodes: "
+                System.out.println("The node " + i + " connects with the nodes: "
                         + vertices[i].printList() + "\n");
             }
         }

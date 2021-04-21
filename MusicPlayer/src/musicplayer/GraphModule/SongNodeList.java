@@ -1,4 +1,7 @@
-package musicplayer;
+package musicplayer.GraphModule;
+
+import musicplayer.Song;
+
 public class SongNodeList {
     Song song;
     SongNodeList next;

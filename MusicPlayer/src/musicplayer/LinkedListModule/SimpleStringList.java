@@ -1,4 +1,4 @@
-package musicplayer;
+package musicplayer.LinkedListModule;
 
 public class SimpleStringList {
     public GenresNodeList head;
@@ -20,18 +20,17 @@ public class SimpleStringList {
         return head == null;
     }
 
-    public String print() {
-        String lista = "";
+    public String printGenres() {
+        String list = "";
         if (isEmpty()) {
-            lista = "Vacía";
+            list = "Empty!";
         } else {
-            GenresNodeList temporal = head;
+            GenresNodeList temp = head;
             do {
-                lista += temporal.genreName + " - ";
-                temporal = temporal.next;
-            } while (temporal != null);
-            lista += " FIN";
+                list += temp.genreName + " ";
+                temp = temp.next;
+            } while (temp != null);
         }
-        return lista;
+        return list;
     }
 }
