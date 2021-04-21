@@ -1,23 +1,24 @@
 package musicplayer;
 
-import javax.swing.JOptionPane;
-
 public class LibraryGUI extends javax.swing.JFrame {
     public LibraryGUI() {
         initComponents();
         this.setTitle("Library");
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
      
     DoubleCircularLinkedList newPlaylist = new DoubleCircularLinkedList();
     Queue libraryList = new Queue();
     Library libraryInstance = new Library();
+    Graph genresLists = new Graph();
     SongNodeDCLL temp;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgMusicGenres = new javax.swing.ButtonGroup();
         txtSingerName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInformation = new javax.swing.JTable();
@@ -33,6 +34,14 @@ public class LibraryGUI extends javax.swing.JFrame {
         btnPrev = new javax.swing.JButton();
         lblCurrentSong = new javax.swing.JLabel();
         btnGender = new javax.swing.JButton();
+        rbtRock = new javax.swing.JRadioButton();
+        rbtPop = new javax.swing.JRadioButton();
+        rbtElectronic = new javax.swing.JRadioButton();
+        rbtReggae = new javax.swing.JRadioButton();
+        rbtSalsa = new javax.swing.JRadioButton();
+        rbtMerengue = new javax.swing.JRadioButton();
+        rbtInstrumental = new javax.swing.JRadioButton();
+        rbtReggaeton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +142,7 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
 
+        lblCurrentSong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCurrentSong.setText("No Current Songs");
 
         btnGender.setText("Genders");
@@ -142,76 +152,131 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
 
+        rbtRock.setText("Rock");
+        rbtRock.setName("rbtRock"); // NOI18N
+
+        rbtPop.setText("Pop");
+        rbtPop.setName("rbtRock"); // NOI18N
+
+        rbtElectronic.setText("Electronic");
+        rbtElectronic.setName("rbtRock"); // NOI18N
+
+        rbtReggae.setText("Reggae");
+        rbtReggae.setName("rbtRock"); // NOI18N
+
+        rbtSalsa.setText("Salsa");
+        rbtSalsa.setToolTipText("");
+        rbtSalsa.setName("rbtRock"); // NOI18N
+
+        rbtMerengue.setText("Merengue");
+        rbtMerengue.setName("rbtRock"); // NOI18N
+
+        rbtInstrumental.setText("Instrumental");
+        rbtInstrumental.setName("rbtRock"); // NOI18N
+
+        rbtReggaeton.setText("Reggaeton");
+        rbtReggaeton.setName("rbtRock"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLibrary)
+                        .addGap(229, 229, 229))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAdd)
+                        .addGap(32, 32, 32))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnGender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreatePlayList)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExit))))
+                                .addComponent(btnExit))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(lblLibrary))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtSongName)
-                                    .addComponent(txtSingerName)
-                                    .addComponent(txtSongDuration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(rbtMerengue)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAdd))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(rbtPop)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtElectronic)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbtReggae))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(rbtSalsa)
+                                .addGap(13, 13, 13)
+                                .addComponent(rbtRock)
+                                .addGap(13, 13, 13)
+                                .addComponent(rbtInstrumental)
+                                .addGap(13, 13, 13)
+                                .addComponent(rbtReggaeton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSongDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSongName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSingerName))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(34, Short.MAX_VALUE)
+                        .addComponent(btnPrev)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext)
+                        .addGap(30, 30, 30))
+                    .addComponent(lblCurrentSong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnPrev)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCurrentSong)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPlay)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNext)))
-                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addComponent(lblLibrary)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSingerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSingerName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSongDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(lblCurrentSong)
+                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtPop)
+                    .addComponent(rbtElectronic)
+                    .addComponent(rbtReggae)
+                    .addComponent(rbtMerengue))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtSalsa)
+                    .addComponent(rbtInstrumental)
+                    .addComponent(rbtReggaeton)
+                    .addComponent(rbtRock))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(lblCurrentSong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPlay)
-                    .addComponent(btnNext)
-                    .addComponent(btnPrev))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(btnPrev)
+                    .addComponent(btnNext))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreatePlayList)
                     .addComponent(btnExit)
@@ -228,21 +293,16 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnCreatePlayListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlayListActionPerformed
-        newPlaylist.IntegrarRecursivo(libraryList.head);
-//        newPlaylist.printList();
-        System.out.println(newPlaylist.head.song.songName);
-        System.out.println(newPlaylist.head.next.song.songName);
-        System.out.println(newPlaylist.last.song.songName);
-        
+        newPlaylist.IntegrarRecursivo(libraryList.head);        
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        libraryList.enqueue(libraryInstance.generateSongNode(
-                txtSongName.getText(),
+        Song s = new Song(txtSongName.getText(),
                 txtSingerName.getText(),
                 cbxYear.getSelectedItem().toString(),
-                Integer.parseInt(txtSongDuration.getText())
-        ));
+                Integer.parseInt(txtSongDuration.getText()));
+        addGenres(s);
+        libraryList.enqueue(s);
         libraryInstance.updateTable(this.tblInformation, libraryList);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -280,8 +340,10 @@ public class LibraryGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSongDurationMouseClicked
 
     private void btnGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenderActionPerformed
-        new GenderClassification().setVisible(true);
-        this.setVisible(false);
+        genresLists.fillEdges(newPlaylist);
+        genresLists.printGraph();
+//        new GenderClassification().setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_btnGenderActionPerformed
 
     public static void main(String args[]) {
@@ -292,7 +354,37 @@ public class LibraryGUI extends javax.swing.JFrame {
         });
     }
 
+    public void addGenres(Song songToEdit){
+        SimpleStringList genreList = new SimpleStringList();
+        if (this.rbtElectronic.isSelected()){
+            genreList.add(this.rbtElectronic.getText());
+        }
+        if (this.rbtReggaeton.isSelected()){
+            genreList.add(this.rbtReggaeton.getText());
+        }
+        if (this.rbtReggae.isSelected()){
+            genreList.add(this.rbtReggae.getText());
+        }
+        if (this.rbtPop.isSelected()){
+            genreList.add(this.rbtPop.getText());
+        }
+        if (this.rbtMerengue.isSelected()){
+            genreList.add(this.rbtMerengue.getText());
+        }
+        if (this.rbtInstrumental.isSelected()){
+            genreList.add(this.rbtInstrumental.getText());
+        }
+        if (this.rbtSalsa.isSelected()){
+            genreList.add(this.rbtSalsa.getText());
+        }
+        if (this.rbtRock.isSelected()){
+            genreList.add(this.rbtRock.getText());
+        }
+        songToEdit.setGenres(genreList);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgMusicGenres;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCreatePlayList;
     private javax.swing.JButton btnExit;
@@ -304,6 +396,14 @@ public class LibraryGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCurrentSong;
     private javax.swing.JLabel lblLibrary;
+    private javax.swing.JRadioButton rbtElectronic;
+    private javax.swing.JRadioButton rbtInstrumental;
+    private javax.swing.JRadioButton rbtMerengue;
+    private javax.swing.JRadioButton rbtPop;
+    private javax.swing.JRadioButton rbtReggae;
+    private javax.swing.JRadioButton rbtReggaeton;
+    private javax.swing.JRadioButton rbtRock;
+    private javax.swing.JRadioButton rbtSalsa;
     private javax.swing.JTable tblInformation;
     private javax.swing.JTextField txtSingerName;
     private javax.swing.JTextField txtSongDuration;
