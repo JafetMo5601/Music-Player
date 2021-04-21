@@ -1,5 +1,11 @@
 package musicplayer;
 
+import musicplayer.GraphModule.Graph;
+import musicplayer.LinkedListModule.SimpleStringList;
+import musicplayer.DCLLModule.SongNodeDCLL;
+import musicplayer.DCLLModule.DoubleCircularLinkedList;
+import musicplayer.QueueModule.Queue;
+
 public class LibraryGUI extends javax.swing.JFrame {
     public LibraryGUI() {
         initComponents();
@@ -294,6 +300,7 @@ public class LibraryGUI extends javax.swing.JFrame {
 
     private void btnCreatePlayListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlayListActionPerformed
         newPlaylist.IntegrarRecursivo(libraryList.head);        
+        newPlaylist.printList();
     }//GEN-LAST:event_btnCreatePlayListActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -341,9 +348,7 @@ public class LibraryGUI extends javax.swing.JFrame {
 
     private void btnGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenderActionPerformed
         genresLists.fillEdges(newPlaylist);
-        genresLists.printGraph();
-//        new GenderClassification().setVisible(true);
-//        this.setVisible(false);
+        new GenderClassificationGUI().loadGenres(genresLists);
     }//GEN-LAST:event_btnGenderActionPerformed
 
     public static void main(String args[]) {
