@@ -23,9 +23,9 @@ public class DoubleCircularLinkedList {
             newSong.next = head;
             head.prev = newSong;
             last = newSong;
-            System.out.println("Prev: " + newSong.prev.song.songName
-                    + " current " + newSong.song.songName + " next: "
-                    + newSong.next.song.songName);
+//            System.out.println("Prev: " + newSong.prev.song.songName
+//                    + " current " + newSong.song.songName + " next: "
+//                    + newSong.next.song.songName);
         }
     }
 
@@ -46,8 +46,9 @@ public class DoubleCircularLinkedList {
             return 1;
         } else {
             SongNodeDCLL temp = new SongNodeDCLL(songNode.song);
-            System.out.println("Current converted: " + temp.song.songName);
-            buscar(temp);
+//            System.out.println("Current converted: " + temp.song.songName);
+            this.add(temp);
+//            buscar(temp);
             return IntegrarRecursivo(songNode.next);
         }
     }
