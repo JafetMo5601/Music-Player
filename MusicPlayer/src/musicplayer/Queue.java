@@ -8,7 +8,8 @@ public class Queue {
         return (head == null);
     }
     
-    public void enqueue(SongNodeQueue newSong){
+    public void enqueue(Song song){
+        SongNodeQueue newSong = new SongNodeQueue(song);
         if(isEmpty()){
             System.out.println("Empty queue");
             head = newSong;
